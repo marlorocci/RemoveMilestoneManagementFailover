@@ -5,7 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RemoveMilestoneManagementFailover"
         mc:Ignorable="d"
-        Title="Remove Management Server Failover" Height="450" Width="800">
+        Title="Remove Management Server Failover" 
+        Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Modern dark blue button style -->
+        <Style x:Key="DarkBlueRoundedButton" TargetType="Button">
+            <Setter Property="Background" Value="#1E40AF" />
+            <!-- nice dark blue -->
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="16,8" />
+            <Setter Property="MinWidth" Value="140" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#1E3A8A"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             RecognizesAccessKey="True" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Hover -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#1E3AFF" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#60A5FA" />
+                            </Trigger>
+                            <!-- Pressed -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#1E3A8A" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#93C5FD" />
+                            </Trigger>
+                            <!-- Disabled -->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#4B5563" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#6B7280" />
+                                <Setter Property="Foreground" Value="#9CA3AF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,21 +64,36 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Remove" Grid.Row="0"  Margin="5,5,5,5" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Button_Click"/>
-        <RichTextBox x:Name="ReportBox" Grid.Row="1" Margin="5,5,5,5">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text=""/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <Label Content="BETA CODE, FOR TESTING PURPOSES ONLY" HorizontalAlignment="Left" Foreground="Yellow" Background="RED" Margin="147,0,0,0" VerticalAlignment="Center"/>
+        <!-- Improved button -->
+        <Button Content="Remove"
+                Grid.Row="0"
+                Style="{StaticResource DarkBlueRoundedButton}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0"
+                Click="Button_Click"/>
 
+        <RichTextBox x:Name="ReportBox" 
+                     Grid.Row="1" 
+                     Margin="12,8,12,12"
+                     BorderBrush="#D1D5DB"
+                     BorderThickness="1"
+                     Background="White"
+                     Padding="8"/>
+
+        <!--<Label Content="BETA CODE, FOR TESTING PURPOSES ONLY" 
+               FontWeight="Black" 
+               HorizontalAlignment="Center" 
+               Foreground="Yellow" 
+               Background="Red" 
+               Margin="0,0,0,0" 
+               VerticalAlignment="Center"/>-->
 
     </Grid>
 </Window>
