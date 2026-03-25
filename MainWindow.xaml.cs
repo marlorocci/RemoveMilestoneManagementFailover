@@ -623,5 +623,45 @@ namespace RemoveMilestoneManagementFailover
             ReportBox.Document.Blocks.Add(registerParagraph);
             RegisterServer();
         }
+
+        private void OpenLog_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WriteLog("OpenLog_Click", "User requested to open log file.");
+
+                if (File.Exists(_logFilePath))
+                {
+                    // Open the log file with the default associated application (usually Notepad)
+                    ProcessStartInfo psi = new ProcessStartInfo
+                    {
+                        FileName = _logFilePath,
+                        UseShellExecute = true
+                    };
+
+                    Process.Start(psi);
+
+                    WriteLog("OpenLog_Click", $"Successfully opened log file: {_logFilePath}");
+                }
+                else
+                {
+                    WriteLog("OpenLog_Click", $"Log file not found at: {_logFilePath}");
+
+                    MessageBox.Show($"Log file not found.\n\nExpected location:\n{_logFilePath}",
+                                   "Log File Not Found",
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog("OpenLog_Click", $"Failed to open log file: {ex.Message}");
+
+                MessageBox.Show($"Failed to open the log file.\n\nError: {ex.Message}",
+                               "Error Opening Log",
+                               MessageBoxButton.OK,
+                               MessageBoxImage.Error);
+            }
+        }
     }
 }

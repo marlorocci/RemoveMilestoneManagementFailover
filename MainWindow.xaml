@@ -58,6 +58,10 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF04D5FD"/>
@@ -74,18 +78,28 @@
         <Button Content="Remove"
                 Grid.Row="0"
                 Style="{StaticResource DarkBlueRoundedButton}"
-                VerticalAlignment="Center"
+                VerticalAlignment="Top"
                 HorizontalAlignment="Center"
-                Margin="0,20,0,0"
-                Click="Button_Click"/>
+                Margin="0,50,0,0"
+                Click="Button_Click" Grid.Column="1"/>
 
+        <Button Content="Open log" 
+                x:Name="OpenLog"  
+                Grid.Row="0"
+                Grid.ColumnSpan="2" 
+                HorizontalAlignment="Right" 
+                Margin="0,50,10,0" 
+                VerticalAlignment="Top" 
+                Style="{StaticResource DarkBlueRoundedButton}" Click="OpenLog_Click"/>
+        
+        
         <RichTextBox x:Name="ReportBox" 
                      Grid.Row="1" 
                      Margin="12,8,12,12"
                      BorderBrush="#D1D5DB"
                      BorderThickness="1"
                      Background="White"
-                     Padding="8"/>
+                     Padding="8" Grid.ColumnSpan="2"/>
 
         <!--<Label Content="BETA CODE, FOR TESTING PURPOSES ONLY" 
                FontWeight="Black" 
