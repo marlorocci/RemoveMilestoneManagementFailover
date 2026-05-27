@@ -57,25 +57,27 @@
         </Style>
     </Window.Resources>
 
+        <TabControl x:Name="MainTabs">
+            <TabItem Header="Controls">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF04D5FD"/>
-                <GradientStop Color="White" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF04D5FD"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <!-- Improved button -->
-        <Button Content="Remove"
+                <!-- Improved button -->
+                <Button Content="Remove"
                 Grid.Row="0"
                 Style="{StaticResource DarkBlueRoundedButton}"
                 VerticalAlignment="Top"
@@ -83,7 +85,7 @@
                 Margin="0,50,0,0"
                 Click="Button_Click" Grid.Column="1"/>
 
-        <Button Content="Open log" 
+                <Button Content="Open log" 
                 x:Name="OpenLog"  
                 Grid.Row="0"
                 Grid.ColumnSpan="2" 
@@ -91,9 +93,9 @@
                 Margin="0,50,10,0" 
                 VerticalAlignment="Top" 
                 Style="{StaticResource DarkBlueRoundedButton}" Click="OpenLog_Click"/>
-        
-        
-        <RichTextBox x:Name="ReportBox" 
+
+
+                <RichTextBox x:Name="ReportBox" 
                      Grid.Row="1" 
                      Margin="12,8,12,12"
                      BorderBrush="#D1D5DB"
@@ -101,13 +103,18 @@
                      Background="White"
                      Padding="8" Grid.ColumnSpan="2"/>
 
-        <!--<Label Content="BETA CODE, FOR TESTING PURPOSES ONLY" 
+                <!--<Label Content="BETA CODE, FOR TESTING PURPOSES ONLY" 
                FontWeight="Black" 
                HorizontalAlignment="Center" 
                Foreground="Yellow" 
                Background="Red" 
                Margin="0,0,0,0" 
                VerticalAlignment="Center"/>-->
-
     </Grid>
+            </TabItem>
+        <TabItem Header="Help">
+        <WebBrowser x:Name="HelpBrowser"/>
+            
+        </TabItem>
+    </TabControl>
 </Window>

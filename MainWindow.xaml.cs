@@ -19,6 +19,13 @@ namespace RemoveMilestoneManagementFailover
         {
             InitializeComponent();
             WriteLog("MainWindow Constructor", "Initialized successfully.");
+            string filePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Help.html");
+
+            HelpBrowser.Navigate(new Uri(filePath));
+
+
         }
 
         private void WriteLog(string functionName, string message)
