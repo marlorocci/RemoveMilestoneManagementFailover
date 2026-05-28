@@ -57,12 +57,13 @@
         </Style>
     </Window.Resources>
 
-        <TabControl x:Name="MainTabs">
-            <TabItem Header="Controls">
-    <Grid>
+    <TabControl x:Name="MainTabs">
+        <TabItem Header="Controls">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0*"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="38*"/>
+                    <ColumnDefinition Width="359*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -81,18 +82,17 @@
                 Grid.Row="0"
                 Style="{StaticResource DarkBlueRoundedButton}"
                 VerticalAlignment="Top"
-                HorizontalAlignment="Center"
-                Margin="0,50,0,0"
-                Click="Button_Click" Grid.Column="1"/>
+                HorizontalAlignment="Left"
+                Margin="251,50,0,0"
+                Click="Button_Click" Grid.Column="2"/>
 
                 <Button Content="Open log" 
                 x:Name="OpenLog"  
-                Grid.Row="0"
-                Grid.ColumnSpan="2" 
+                Grid.Row="0" 
                 HorizontalAlignment="Right" 
                 Margin="0,50,10,0" 
                 VerticalAlignment="Top" 
-                Style="{StaticResource DarkBlueRoundedButton}" Click="OpenLog_Click"/>
+                Style="{StaticResource DarkBlueRoundedButton}" Click="OpenLog_Click" Grid.Column="2"/>
 
 
                 <RichTextBox x:Name="ReportBox" 
@@ -101,7 +101,7 @@
                      BorderBrush="#D1D5DB"
                      BorderThickness="1"
                      Background="White"
-                     Padding="8" Grid.ColumnSpan="2"/>
+                     Padding="8" Grid.ColumnSpan="3"/>
 
                 <!--<Label Content="BETA CODE, FOR TESTING PURPOSES ONLY" 
                FontWeight="Black" 
@@ -110,11 +110,11 @@
                Background="Red" 
                Margin="0,0,0,0" 
                VerticalAlignment="Center"/>-->
-    </Grid>
-            </TabItem>
+            </Grid>
+        </TabItem>
         <TabItem Header="Help">
-        <WebBrowser x:Name="HelpBrowser"/>
-            
+            <WebBrowser x:Name="HelpBrowser"/>
+
         </TabItem>
     </TabControl>
 </Window>
